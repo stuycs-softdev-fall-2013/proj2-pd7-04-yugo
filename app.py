@@ -7,7 +7,7 @@ app = Flask(__name__)
 def home():
     if request.method == 'GET':
         return render_template('index.html')
-    search = request.form['search']
+    newLocation = request.form['newLocation']
     return redirect(url_for('main'))
 
 @app.route('/main', methods = ['GET', 'POST'])
@@ -15,7 +15,11 @@ def main():
     if request.method == 'GET':
         return render_template('main.html')
     search = request.form['search']
-    return redirect(url_for('home'))
+    return redirect(url_for('results'))
+
+@app.route('/results')
+def results():
+    return render_template('results.html')
 
 if __name__=="__main__":
     app.debug=True
