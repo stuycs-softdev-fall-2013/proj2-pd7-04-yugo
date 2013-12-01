@@ -3,6 +3,7 @@ from flask import Flask
 from flask import session, url_for, redirect, render_template, request, flash
 import urllib2
 import oauth2
+import json
 
 app = Flask(__name__)
 
@@ -10,7 +11,7 @@ app = Flask(__name__)
 #address is a string in the form of {street address, neighborhood, city, state}
 #service is a string
 ###All ' ' must be instead '+'
-def yelpAPI(address,service):
+def yelpAPI(address,service,limit):
 
     ##########################################################
     # Borrowed from Yelp oauth help files                    #
@@ -31,8 +32,9 @@ def yelpAPI(address,service):
     ### following code customized by our group
 
 
-    int limit = 10;
-    url = 'http://api.yelp.com/v2/search?term=%s&location=%s&limit=%d'%(service, address, limit)
+    #limit = 1; #number of results returned
+
+    url = 'http://api.yelp.com/v2/search?term=%s&location=%s&limit=%d&format=json'%(service, address, limit)
 
 
     ### end of customized code 
@@ -57,11 +59,44 @@ def yelpAPI(address,service):
     # End of borrowed code     #
     ############################
     
-    connection = urllib2.urlopen(signed_url);
-    response = connection.read();
+    return signed_url
 
 
+def testURL(url):
+    connection = urllib2.urlopen(url)
+    response = json.load(connection)
+    connection.close()
+    return response
+
+
+#returns list of dicts
+#each dict has keys
+#'name' = <name of place>
+#'address' = <(string) address of place>
+def getNameAddress(service, curAddress, numOfReturnedBusinesses):
+    url = yelpAPI(curAddress, service, numOfReturnedBusinesses)
+    response = testURL(url)
+
+    buses = response["businesses"]
+    businesses = []
     
+    i = 0
+    for elem in buses:
+        addressList = response["businesses"][i]["location"]["display_address"]
+        addr = str(addressList[0] + " " + addressList[2] + " " + addressList[3])
+
+        busDict = {}
+        busDict["address"] = addr
+        busDict["name"] = response["businesses"][i]["name"]
+
+        businesses.append(busDict)
+        i = i + 1
+
+    return businesses
+        
+    
+print getNameAddress("cafe", "215 West 88th St New York, NY", 3)  
+
 #if __name__=="__main__":
 #     app.debug=True
 #     app.run(host='0.0.0.0',port=5000)
