@@ -24,9 +24,7 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>
-      <li><a href="/main">Main</a></li>
-      <li><a href="#">Account</a></li>
-    </ul>
+        </ul>
     <ul class="navbar-text navbar-right">
       Your current locations is : {{location}}
     </ul>
@@ -36,11 +34,12 @@
 
    <div class="jumbotron">
         <h1>Get Started Today!</h1>
-        <p class="lead">Proceed with your current location, or enter a new one below!</p>
-        <p><a class="btn btn-lg btn-success" href="/main" role="button">Proceed</a></p>
-	<form method=POST>
-	  <div class=description>Enter your new location:</div>
-	  <input type=text class="form-control" name=newLocation placeholder="Enter the new location here">
+        <p class="lead">Enter your location and search below!</p>
+       	<form method=POST>
+	  <div class=description>Enter your location:</div>
+	  <input type=text class="form-control" name=location placeholder="Enter the new location here">
+	  <div class=description>Enter your search:</div>
+	  <input type=text class="form-control" name=search placeholder="Enter the new location here">
 	  <br>
 	  <input type=submit class="btn btn-lgn btn-success">
 	</form>
