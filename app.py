@@ -22,7 +22,7 @@ def results():
     return render_template('results.html')
     
 @app.route('/search')
-def results():
+def serach():
     return render_template('search.html')
 
 if __name__=="__main__":
