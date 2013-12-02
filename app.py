@@ -1,0 +1,22 @@
+from flask import Flask
+from flask import render_template, session, request, redirect, url_for
+
+app = Flask(__name__)
+
+@app.route('/', methods = ['GET', 'POST'])
+def home():
+    if request.method == 'GET':
+        return render_template('index.html')
+    search = request.form['search']
+    return redirect(url_for('main'))
+
+@app.route('/main', methods = ['GET', 'POST'])
+def main():
+    if request.method == 'GET':
+        return render_template('main.html')
+    search = request.form['search']
+    return redirect(url_for('home'))
+
+if __name__=="__main__":
+    app.debug=True
+    app.run(host='0.0.0.0',port=5000)
