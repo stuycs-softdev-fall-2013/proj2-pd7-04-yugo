@@ -25,9 +25,9 @@ def results():
 def search():
     return render_template('search.html')
     
-@app.route('/About Us')
-def About Us():
-    return render_template('About Us.html')
+@app.route('/AboutUs')
+def AboutUs():
+    return render_template('AboutUs.html')
 
 if __name__=="__main__":
     app.debug=True
