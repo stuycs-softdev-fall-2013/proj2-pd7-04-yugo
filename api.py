@@ -94,10 +94,6 @@ def getNameAddress(service, curAddress, numOfReturnedBusinesses):
 
     return businesses
         
-    
-print getNameAddress("cafe", "215 West 88th St New York, NY", 3)  
-
-#if __name__=="__main__":
-#     app.debug=True
-#     app.run(host='0.0.0.0',port=5000)
+#e.g. call of getNameAddress()    
+#print getNameAddress("cafe", "245 West 80th St New York, NY", 3)  
     
