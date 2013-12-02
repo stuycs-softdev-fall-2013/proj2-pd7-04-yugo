@@ -20,6 +20,10 @@ def main():
 @app.route('/results')
 def results():
     return render_template('results.html')
+    
+@app.route('/serach')
+def results():
+    return render_template('search.html')
 
 if __name__=="__main__":
     app.debug=True
