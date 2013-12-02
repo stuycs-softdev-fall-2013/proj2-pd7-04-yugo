@@ -13,16 +13,10 @@ def home():
     business = api.getNameAddress(search, location, 20)
     return render_template('results.html', search = search, location=location, business = business)
 
-@app.route('/main', methods = ['GET', 'POST'])
-def main():
-    if request.method == 'GET':
-        return render_template('main.html')
-    search = request.form['search']
-    return redirect(url_for('results'))
 
-@app.route('/results/<name>', methods= ['GET','POST'])
+@app.route('/results/<location>/<name>', methods= ['GET','POST'])
 def results():
-    return render_template('results.html', search=search, location=location)
+    return render_template('pagetemplate.html', name=name, location=location)
 
 if __name__=="__main__":
     app.debug=True

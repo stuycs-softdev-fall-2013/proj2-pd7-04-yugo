@@ -48,6 +48,7 @@
        {% for busDict in business %}
        Name: {{busDict[0]}}
        Location: {{busDict[1]}}
+       <a href=/{{busDict[1]}}/{{busDict[0]}}>Get Directions</a>
        {% endfor %}
       
      </div>
