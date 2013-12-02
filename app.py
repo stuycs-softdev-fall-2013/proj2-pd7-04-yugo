@@ -21,7 +21,7 @@ def main():
 def results():
     return render_template('results.html')
     
-@app.route('/serach')
+@app.route('/search')
 def results():
     return render_template('search.html')
 
