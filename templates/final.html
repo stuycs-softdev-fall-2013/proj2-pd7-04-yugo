@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <style>
+      html, body, #map-canvas {
+      height: 100%;
+      margin: 0px;
+      padding: 0px
+      }
+      #panel {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      margin-left: -180px;
+      z-index: 5;
+      background-color: #fff;
+      padding: 5px;
+      border: 1px solid #999;
+      }
+    </style>
+
+    <style>
+      #directions-panel {
+      height: 100%;
+      float: right;
+      width: 390px;
+      overflow: auto;
+      }
+
+      #map-canvas {
+      margin-right: 400px;
+      }
+
+      @media print {
+      #map-canvas {
+      height: 500px;
+      margin: 0;
+      }
+      
+      #directions-panel {
+      float: none;
+      width: auto;
+      }
+      }
+    </style>
+
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA7Yrvg4i4oRLf9cbnFpyS3YXvxX1PhT5E&v=3.exp&sensor=false">
+    </script>
+    
+    <script>
+      var directionsDisplay;
+      var directionsService = new google.maps.DirectionsService();
+      
+      function initialize() {
+      directionsDisplay = new google.maps.DirectionsRenderer();
+      
+      var mapSet = {
+      center: new google.maps.LatLng(40.717975, -74.014037),
+      zoom: 5
+      };
+
+      var map = new google.maps.Map(document.getElementById("map-canvas"), mapSet);
+      directionsDisplay.setMap(map);
+      directionsDisplay.setPanel(document.getElementById("directions-panel"));
+
+      }
+
+      function calcRoute() {
+      var selectedMode = document.getElementByID("mode").value;
+      var start = "345 Chambers Street".value;
+      var end = "4425 Kissena Blvd, Flushing, NY 11355".value;
+      
+      var request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.TravelMode[selectedMode]
+      };
+      
+      directionsService.route(request, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+      }});
+      }
+      
+      google.maps.event.addDomListener(window, 'load', initialize);
+      
+    </script>
+  </head>
+
+  <body>
+    <div id="panel">
+      <b>Mode of Travel: </b>
+      <select id="mode" onchange="calcRoute();">
+	<option value="DRIVING">Driving</option>
+	<option value="WALKING">Walking</option>
+	<option value="BICYCLING">Bicycling</option>
+	<option value="TRANSIT">Transit</option>
+      </select>
+    </div>
+    <div id="map-canvas"></div>
+    <br>
+    <div id="directions-panel"></div>
+  </body>
+  
+</html>
