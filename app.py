@@ -22,8 +22,12 @@ def results():
     return render_template('results.html')
     
 @app.route('/search')
-def serach():
+def search():
     return render_template('search.html')
+    
+@app.route('/About Us')
+def About Us():
+    return render_template('About Us.html')
 
 if __name__=="__main__":
     app.debug=True
