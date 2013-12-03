@@ -13,7 +13,15 @@ def home():
     business = api.getNameAddress(search, location, 20)
     return render_template('results.html', search = search, location=location, business = business)
 
-
+@app.route('/AboutUs')
+def AboutUs():
+    return render_template('AboutUs.html')
+	
+@app.route('/get/<location>/<name>', methods = ['GET', 'POST'])
+def go():
+    return render_template('go.html', name=name, location=location)
+    
+    
 @app.route('/results/<location>/<name>', methods= ['GET','POST'])
 def results():
     return render_template('pagetemplate.html', name=name, location=location)
