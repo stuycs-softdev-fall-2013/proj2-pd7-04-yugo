@@ -8,7 +8,7 @@ import json
 app = Flask(__name__)
 
 
-#address is a string in the form of {street address, neighborhood, city, state}
+#address is a string in the form of {street address, neighborhood, city, or state}
 #service is a string
 ###All ' ' must be instead '+'
 def yelpAPI(address,service,limit):
@@ -92,8 +92,14 @@ def getNameAddress(service, curAddress, numOfReturnedBusinesses):
             
 
         busDict = {}
-        busDict["address"] = addr
+        busDict["address"] = str(addr)
         busDict["name"] = response["businesses"][i]["name"]
+
+        if "image_url" in response["businesses"][i]:
+            busDict["img_url"] = str(response["businesses"][i]["image_url"])
+        else:
+            busDict["img_url"] = ""
+
 
         businesses.append(busDict)
         i = i + 1
@@ -103,3 +109,4 @@ def getNameAddress(service, curAddress, numOfReturnedBusinesses):
 #e.g. call of getNameAddress()    
 #print getNameAddress("cafe", "245 West 80th St New York, NY", 3)  
     
+getNameAddress("cafe", "New York City", 5)
