@@ -42,15 +42,20 @@
      <div class="col-lg-6">
        <h2>Results</h2>
        <p>After searching our databases, we have displayed the results of our searches below:
-	 Your search:{{search}} <br>
-	 Your location:{{location}}</p>
-       {{business}}
+	 Your location: {{location}}<br>
+	 Your search: {{search}} </p>
+	
+   
+
        {% for busDict in business %}
-       Name: {{busDict[0]}}
-       Location: {{busDict[1]}}
-       <a href=/{{busDict[1]}}/{{busDict[0]}}>Get Directions</a>
+       <br>
+       <h4>{{busDict['name']}}</h4>
+       Location : {{busDict['address']}}
+       <br>
        {% endfor %}
+   
       
+           
      </div>
    </div>
  </div>
