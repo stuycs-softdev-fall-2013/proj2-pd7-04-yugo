@@ -16,6 +16,10 @@ def home():
 @app.route('/AboutUs')
 def AboutUs():
     return render_template('AboutUs.html')
+	
+@app.route('/go')
+def go():
+    return render_template('go.html')
     
     
 @app.route('/results/<location>/<name>', methods= ['GET','POST'])
