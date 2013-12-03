@@ -44,15 +44,17 @@
        <p>After searching our databases, we have displayed the results of our searches below:
 	 Your location: {{location}}<br>
 	 Your search: {{search}} </p>
-	
-   
 
        {% for busDict in business %}
        <br>
-       <h4>{{busDict['name']}}</h4>
-	   <img src={{busDict['img_url']}} alt="picture" width="150" height="150">
-	   <br>
-       Location : {{busDict['address']}}
+	   <div class="list-group">
+	<a href="#" class="list-group-item active">
+	<h4>{{busDict['name']}}</h4>
+    <img src="{{busDict['image_url']}}" alt="picture" width="150" height="150">
+    <p class="list-group-item-text"><br>
+       Location : {{busDict['address']}}</p>
+	</a>
+		</div>
        <br>
        {% endfor %}
    
