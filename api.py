@@ -100,6 +100,7 @@ def getNameAddress(service, curAddress, numOfReturnedBusinesses):
         else:
             busDict["img_url"] = ""
 
+        #print busDict["img_url"]
 
         businesses.append(busDict)
         i = i + 1
