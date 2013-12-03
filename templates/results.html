@@ -50,6 +50,8 @@
        {% for busDict in business %}
        <br>
        <h4>{{busDict['name']}}</h4>
+	   <img src="{{busDict['image_url']}}" alt="picture" width="150" height="150">
+	   <br>
        Location : {{busDict['address']}}
        <br>
        {% endfor %}
