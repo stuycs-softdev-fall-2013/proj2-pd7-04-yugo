@@ -83,7 +83,11 @@ def getNameAddress(service, curAddress, numOfReturnedBusinesses):
     i = 0
     for elem in buses:
         addressList = response["businesses"][i]["location"]["display_address"]
-        addr = str(addressList[0] + " " + addressList[2] + " " + addressList[3])
+        
+        addr = ""
+        for ad in addressList:
+            #addr = str(addressList[0] + " " + addressList[2] + " " + addressList[3])
+            addr += ad + " " 
 
         busDict = {}
         busDict["address"] = addr
