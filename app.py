@@ -17,9 +17,9 @@ def home():
 def AboutUs():
     return render_template('AboutUs.html')
 	
-@app.route('/go')
+@app.route('/get/<location>/<name>', methods = ['GET', 'POST'])
 def go():
-    return render_template('go.html')
+    return render_template('go.html', name=name, location=location)
     
     
 @app.route('/results/<location>/<name>', methods= ['GET','POST'])
