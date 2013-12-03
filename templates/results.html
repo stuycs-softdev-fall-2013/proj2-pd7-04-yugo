@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+
 <head>
   <link rel="stylesheet" href="/static/css/bootstrap.css">
   <link rel="stylesheet" href="/static/css/justified-nav.css">
-  <link href="jumbotron-narrow.css" rel="stylesheet">
+
   
 </head>
 <body>
@@ -23,28 +23,46 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/">Home</a></li>
-        </ul>
+      <li><a href="/">Home</a></li>
+      <li class="active"><a href="/results">Results</a></li>
+    </ul>
     <ul class="navbar-text navbar-right">
       Your current locations is : {{location}}
     </ul>
   </div><!-- /.navbar-collapse -->
  </nav>
 
+ <div class ="container">
+   <div class="row">
+     <div class="col-lg-2">
+       <h2>Notes</h2>
+       <p>You can return to the homepage to begin another search!
+       <p><a class="btn btn-primary" href="/" role="button">Home</a></p>
+     </div>
+     <div class="col-lg-6">
+       <h2>Results</h2>
+       <p>After searching our databases, YUGO found the following results:
+	   <br>
+	 Your location: {{location}}<br>
+	 Your search: {{search}} </p>
 
-   <div class="jumbotron">
-        <h1>Welcome to YUGO!</h1>
-        <p class="lead">Enter your location and search below!</p>
-       	<form method=POST>
-	  <div class=description>Enter your location:</div>
-	  <input type=text class="form-control" name=location placeholder="Enter the new location here">
-	  <div class=description>Enter your search:</div>
-	  <input type=text class="form-control" name=search placeholder="Enter your search here">
-	  <br>
-	  <input type=submit class="btn btn-lgn btn-success">
-	</form>
+       {% for busDict in business %}
+       <br>
+	   <div class="list-group">
+	<a href="#" class="list-group-item active">
+	<h4>{{busDict['name']}}</h4>
+    <img src="{{busDict['img_url']}}" alt="picture" width="150" height="150">
+    <p class="list-group-item-text"><br>
+       Location : {{busDict['address']}}</p> 
+	</a>
+		</div>
+       <br>
+       {% endfor %}
+   
+      
+           
+     </div>
    </div>
-  
-  
+ </div>
 </body>
-</html>
+
