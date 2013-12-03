@@ -87,7 +87,9 @@ def getNameAddress(service, curAddress, numOfReturnedBusinesses):
         addr = ""
         for ad in addressList:
             #addr = str(addressList[0] + " " + addressList[2] + " " + addressList[3])
-            addr += ad + " " 
+            if ad[0] != '(':
+                addr += ad + " " 
+            
 
         busDict = {}
         busDict["address"] = addr
