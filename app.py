@@ -20,9 +20,9 @@ def AboutUs():
     return render_template('AboutUs.html')
 	
 @app.route('/go', methods= ['GET','POST'])
-def go():
+def compile():
     if request.method == 'GET':
-		return render_template('go.html')
+		return render_template('compile.html')
 	
 	
 @app.route('/results/<location>/<name>', methods= ['GET','POST'])
