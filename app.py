@@ -19,10 +19,10 @@ def home():
 def AboutUs():
     return render_template('AboutUs.html')
 	
-@app.route('/compile', methods= ['GET','POST'])
-def compile():
+@app.route('/compile/<saddress>/<eaddress>', methods= ['GET','POST'])
+def compile(saddress=None, eaddress=None):
     if request.method == 'GET':
-		return render_template('compile.html')
+		return render_template('compile.html', saddress=saddress, eaddress=eaddress)
 	
 	
 @app.route('/results/<location>/<name>', methods= ['GET','POST'])

@@ -25,7 +25,7 @@
        {% for busDict in business %}
 		<br>
 		<div class="list-group">
-		<a href="/compile" class="list-group-item active">
+		<a href="/compile/{{location}}/{{busDict['address']}}" class="list-group-item active">
 		<h4>{{busDict['name']}}</h4>
 		<img src="{{busDict['img_url']}}" alt="picture" width="150" height="150">
 		<p class="list-group-item-text"><br>
