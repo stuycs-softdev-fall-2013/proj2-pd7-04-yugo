@@ -3,12 +3,11 @@
 <head>
   <link rel="stylesheet" href="/static/css/bootstrap.css">
   <link rel="stylesheet" href="/static/css/justified-nav.css">
-
+  <title>YUGO</title>
   
 </head>
 <body>
-
- <nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -20,18 +19,29 @@
     <a class="navbar-brand" href="#">YUGO</a>
   </div>
 
+
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <li><a href="/">Home</a></li>
-      <li class="active"><a href="/results">Results</a></li>
+      <li><a href="/AboutUs">About Us</a></li>
+       <li class="active"><a href="/results">Results</a></li>
+
     </ul>
+    
     <ul class="navbar-text navbar-right">
-      Your current locations is : {{location}}
+      <i> </i>Your current locations is: {{location}} </i>
     </ul>
-  </div><!-- /.navbar-collapse -->
+ 
+ </div><!-- /.navbar-collapse -->
  </nav>
 
+	<head>
+	<style>
+	h4 {color: white;}
+	p.ex {color: white;}
+	</style>
+	</head>
  <div class ="container">
    <div class="row">
      <div class="col-lg-2">
@@ -47,22 +57,28 @@
 	 Your search: {{search}} </p>
 
        {% for busDict in business %}
-       <br>
-	   <div class="list-group">
-	<a href="#" class="list-group-item active">
-	<h4>{{busDict['name']}}</h4>
-    <img src="{{busDict['img_url']}}" alt="picture" width="150" height="150">
-    <p class="list-group-item-text"><br>
-       Location : {{busDict['address']}}</p> 
-	</a>
+		<br>
+		<div class="list-group">
+		<a href="/compile/{{location}}/{{busDict['address']}}" class="list-group-item active">
+		<h4>{{busDict['name']}}</h4>
+		<img src="{{busDict['img_url']}}" alt="picture" width="150" height="150">
+		<p class="list-group-item-text"><br>
+		Location : {{busDict['address']}}</p> 
+		</a>
 		</div>
-       <br>
-       {% endfor %}
-   
-      
-           
+		<br>
+		{% endfor %}
+         
      </div>
    </div>
  </div>
+    <!-- 	<script> -->
+    <!-- 	 $(".addressClick").click(function () { -->
+    <!--     var addressValue = $(this).attr("href"); -->
+    <!--     alert(addressValue ); -->
+    <!-- }); -->
+    <!-- 	</script> -->
+ 
 </body>
 
+	

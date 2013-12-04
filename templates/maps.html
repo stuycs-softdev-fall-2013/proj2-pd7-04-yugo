@@ -1,27 +1,34 @@
 <!DOCTYPE html>
-<html>
+
 <head>
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA7Yrvg4i4oRLf9cbnFpyS3YXvxX1PhT5E&sensor=false">
-</script>
-
-<script>
-function initialize()
-{
-var mapProp = {
-  center:new google.maps.LatLng(51.508742,-0.120850),
-  zoom:5,
-  mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-var map=new google.maps.Map(document.getElementById("googleMap")
-  ,mapProp);
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/css/justified-nav.css">
+  
 </head>
 
 <body>
-<div id="googleMap" style="width:500px;height:380px;"></div>
 
+  {% include "navbar.html" %}
+
+<div class ="container">
+	<div class="row">
+	<div class="col-lg-2">
+       <h2>Notes</h2>
+       <p>You can return to the homepage to begin another search!
+       <p><a class="btn btn-primary" href="/" role="button">Home</a></p>
+	</div>
+	
+	<div class="col-lg-6">
+	 
+      <p>How to get from {{location}} to the {{search}} </p>
+	
+	</div>
+   
+  
+ </div>
+  {% include maps.html" %}
+  {% include "compile.html" %}
+  
+</div>
+ 
 </body>
-</html>
