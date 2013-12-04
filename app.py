@@ -22,8 +22,6 @@ def AboutUs():
 @app.route('/compile/<saddress>/<eaddress>', methods= ['GET'])
 def compile(saddress=None, eaddress=None):
     if request.method == 'GET':
-        print saddress
-        print eaddress
         return render_template('compile.html', saddress=saddress, eaddress=eaddress)
 	
 	
