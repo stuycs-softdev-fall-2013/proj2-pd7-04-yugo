@@ -19,7 +19,7 @@ def home():
 def AboutUs():
     return render_template('AboutUs.html')
 	
-@app.route('/go', methods= ['GET','POST'])
+@app.route('/compile', methods= ['GET','POST'])
 def compile():
     if request.method == 'GET':
 		return render_template('compile.html')
