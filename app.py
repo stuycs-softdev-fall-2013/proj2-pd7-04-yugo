@@ -1,6 +1,8 @@
 from flask import Flask
 from flask import render_template, session, request, redirect, url_for
 import api
+import httplib2
+from BeautifulSoup import BeautifulSoup, SoupStrainer
 
 app = Flask(__name__)
 
